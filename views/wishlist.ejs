@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css" type="text/css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+         <div class="first-half">
+                <div class="form">
+                    <h1>Add your wish</h1>
+                    <form action="/wishes/addWish" method='POST'>
+                        <div class="text-field">
+                            <span></span>
+                            <input name="wish">
+                            <label> Wish</label>
+                        </div>
+                        <div class="text-field">
+                            <span></span>
+                            <input name="price" >
+                            <label> Price</label>
+                        </div>
+                        <div class="text-field">
+                            <span></span>
+                            <input name="url" >
+                            <label> Url</label>
+                        </div>
+                        
+                        <!-- <label for="">Wish
+                            <input name="wish">
+                        </label>
+                        <label for="">Price
+                            <input name="price">
+                        </label> 
+                        <label for="">Url
+                            <input name="url">
+                        </label> -->
+                        <button class="btn-1">Submit</button>
+                        <div class="logout">
+                            <a href="/logout">Logout</a>
+                        </div>
+                        
+                    
+                    </form>
+            </div>
+          </div>
+          <div class="second-half">
+            <ul class="wishContainer">
+                <% wishes.forEach(e =>{ %>
+                    
+                    <li class="wishCard wishItem" data-id="<%=e._id%>">
+                        <h2 class="<%=e.purchased === true ? 'granted' : 'not'%>"><%=e.wish%></h2>
+                        <span class="wishDetails">Cost: $<%=e.price%></span>
+                        <a class="wishDetails"href='<%=e.url%>'>Link To Item</a>
+                        <span class="del">Delete</span>
+                    </li>
+                <%})%>
+            </ul>
+          </div>
+          
+        </div>
+    </div>
+    <ul>
+        <% wishes.forEach(e => {%>
+        <li>
+            <h2><%=e.wish%> </h2>
+            <span> Cost :<%=e.price%>.00 </span>
+            <a href="<%=e.url%> ">Link to Item</a>
+        </li>
+        <%})%> 
+    </ul>
+    
+</body>
+</html>
